@@ -1,0 +1,3 @@
+[submodule "lib/hubot-github-heroku-deploy"]
+	path = lib/hubot-github-heroku-deploy
+	url = git@github.com:ngauthier/hubot-github-heroku-deploy.git
