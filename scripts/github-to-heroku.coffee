@@ -1,0 +1,1 @@
+../lib/hubot-github-heroku-deploy/github-to-heroku.coffee
