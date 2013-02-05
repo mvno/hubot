@@ -2,7 +2,7 @@
 # Setting up fussball teams 
 #
 # Commands:
-# Hubot fussball
+# Hubot foosball
 # hubot ball
 # hubot bold 
 
@@ -21,7 +21,7 @@ module.exports = (robot) ->
 
   robot.respond /@?(foosball|ball|bold|debug) ja*$/i, (msg) ->
     command = msg.match[1]
-    sender = msg.message.user.name.toLowerCase()
+    sender = msg.message.user.name
 
     if(command.trim() is 'debug')
       sender = "#{sender}-Debug-#{players.length}"
