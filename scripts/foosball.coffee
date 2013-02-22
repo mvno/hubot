@@ -15,7 +15,7 @@ module.exports = (robot) ->
     sender = msg.message.user.name
     if (robot.brain.data.players.length is 0)
       robot.brain.data.players.push sender
-      msg.send "#{robot.brain.data.players[0]} wants to play. Anyone else wants to play foosball?"
+      msg.send ":soccer: #{robot.brain.data.players[0]} wants to play. Anyone else wants to play foosball?"
     else
       msg.send "Sorry #{sender} Dude, a game is about to start. Join by typing 'hubot bold ja'"
 
@@ -34,7 +34,7 @@ module.exports = (robot) ->
 
     if ((maxplayers - robot.brain.data.players.length) is 0)
       robot.brain.data.players.shuffle()
-      msg.send "Teams are BLUE: #{robot.brain.data.players[0]} and #{robot.brain.data.players[1]} RED: #{robot.brain.data.players[2]}, #{robot.brain.data.players[3]}"
+      msg.send ":large_blue_circle: #{robot.brain.data.players[0]} and #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]}, #{robot.brain.data.players[3]}"
       robot.brain.data.players = []
 
     
