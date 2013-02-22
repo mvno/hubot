@@ -34,7 +34,7 @@ module.exports = (robot) ->
 
     if ((maxplayers - robot.brain.data.players.length) is 0)
       robot.brain.data.players.shuffle()
-      msg.send ":large_blue_circle: #{robot.brain.data.players[0]} and #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]}, #{robot.brain.data.players[3]}"
+      msg.send ":large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
       robot.brain.data.players = []
 
     
