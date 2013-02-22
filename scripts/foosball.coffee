@@ -30,7 +30,7 @@ module.exports = (robot) ->
       msg.send "#{sender} REALLY wants to play. #{maxplayers - robot.brain.data.players.length} More needed" 
     else 
       robot.brain.data.players.push sender
-      msg.send "#{robot.brain.data.players.toString()} wants to play. #{maxplayers - robot.brain.data.players.length} More needed" 
+      msg.send "#{robot.brain.data.players.toString()} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
 
     if ((maxplayers - robot.brain.data.players.length) is 0)
       robot.brain.data.players.shuffle()
