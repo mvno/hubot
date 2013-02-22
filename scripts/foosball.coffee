@@ -23,7 +23,7 @@ module.exports = (robot) ->
     command = msg.match[1]
     sender = msg.message.user.name
 
-    if(command.trim() is 'debug')
+    if (command.trim() is 'debug')
       sender = "#{sender}-Debug-#{robot.brain.data.players.length}"
 
     if (sender in robot.brain.data.players)
