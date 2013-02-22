@@ -17,7 +17,7 @@ module.exports = (robot) ->
       robot.brain.data.players.push sender
       msg.send ":soccer: #{robot.brain.data.players[0]} wants to play. Anyone else wants to play foosball?"
     else
-      msg.send ":soccer: Sorry #{sender} Dude, a game is about to start. Join by typing 'hubot bold ja'"
+      msg.send ":soccer: Sorry #{sender}, a game is about to start. Join by typing 'hubot bold ja'"
 
   robot.respond /@?(foosball|ball|bold|debug) ja*$/i, (msg) ->
     command = msg.match[1]
