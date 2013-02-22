@@ -30,11 +30,11 @@ module.exports = (robot) ->
       msg.send "#{sender} REALLY wants to play. #{maxplayers - robot.brain.data.players.length} More needed" 
     else 
       robot.brain.data.players.push sender
-      msg.send "#{robot.brain.data.players.toString()} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
-
-    if ((maxplayers - robot.brain.data.players.length) is 0)
-      robot.brain.data.players.shuffle()
-      msg.send ":large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
-      robot.brain.data.players = []
+      if ((maxplayers - robot.brain.data.players.length) is 0)
+        robot.brain.data.players.shuffle()
+        msg.send ":large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
+        robot.brain.data.players = []
+      else
+        msg.send "#{robot.brain.data.players.toString()} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
 
     
