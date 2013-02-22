@@ -20,7 +20,7 @@ echo "$GITHUB_PUBLIC_KEY" >"$IDENTITY_FILE.pub"
 git clone $GITHUB_URL $repo
 cd $repo
 git remote add heroku $HEROKU_URL
-git push heroku
+git push heroku 2>&1
 
 rm -f "$IDENTITY_FILE"
 rm -f "$IDENTITY_FILE.pub"
