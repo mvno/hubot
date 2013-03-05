@@ -17,6 +17,7 @@
   "dependencies": {
     "hubot": ">=2.4.6",
     "hubot-scripts": ">= 2.4.1",
+    "mongodb": "*",
     "optparse": "1.0.3"
   },
 
