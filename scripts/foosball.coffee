@@ -26,3 +26,8 @@ module.exports = (robot) ->
 
   robot.hear /(foosball|ball|bold) (queue|kø)*$/i, (msg) ->
     msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
+
+  robot.hear /(foosball|ball|bold) (remove|fjern)*$/i, (msg) ->
+    sender = msg.message.user.name
+    robot.brain.data.players.remove(sender)
+    msg.send ":soccer: #{sender} is a chicken. #{maxplayers - robot.brain.data.players.length} More needed"
