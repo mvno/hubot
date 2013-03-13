@@ -3,6 +3,7 @@
 
 maxplayers = 4 
 Array::shuffle = -> @sort -> 0.5 - Math.random()
+Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 
 module.exports = (robot) ->
   robot.brain.data.players = []
