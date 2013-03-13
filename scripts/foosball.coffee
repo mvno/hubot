@@ -19,12 +19,8 @@ module.exports = (robot) ->
     else
       msg.send ":soccer: Sorry #{sender}, a game is about to start. Join by typing 'hubot bold ja'"
 
-  robot.respond /@?(foosball|ball|bold|debug) ja*$/i, (msg) ->
-    command = msg.match[1]
+  robot.respond /@?(foosball|ball|bold) ja*$/i, (msg) ->
     sender = msg.message.user.name
-
-    if (command.trim() is 'debug')
-      sender = "#{sender}-Debug-#{robot.brain.data.players.length}"
 
     if (sender in robot.brain.data.players)
       msg.send ":soccer: #{sender} REALLY wants to play. #{maxplayers - robot.brain.data.players.length} More needed" 
