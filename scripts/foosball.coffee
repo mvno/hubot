@@ -28,5 +28,5 @@ module.exports = (robot) ->
         else
           msg.send ":soccer: #{sender} is queued to play. #{maxplayers - robot.brain.data.players.length} more needed"
 
-  robot.respond /@?(foosball|ball|bold|debug) (queue|kø)*$/i, (msg) ->
+  robot.hear /(foosball|ball|bold) (queue|kø)*$/i, (msg) ->
     msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
