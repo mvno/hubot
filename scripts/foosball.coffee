@@ -35,7 +35,7 @@ module.exports = (robot) ->
         msg.send ":soccer: :large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
         robot.brain.data.players = []
       else
-        msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
+        msg.send ":soccer: #{robot.brain.data.players.length} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
 
   robot.respond /@?(foosball|ball|bold|debug) (queue|kø)*$/i, (msg) ->
     msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
