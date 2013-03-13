@@ -11,7 +11,7 @@ Array::shuffle = -> @sort -> 0.5 - Math.random()
 
 module.exports = (robot) ->
   robot.brain.data.players = []
-  robot.respond  /@?(foosball|ball|bold)*$/i, (msg) ->
+  robot.hear /(foosball|ball|bold)/i, (msg) ->
     sender = msg.message.user.name
     if (robot.brain.data.players.length is 0)
       robot.brain.data.players.push sender
