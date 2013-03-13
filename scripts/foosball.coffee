@@ -1,10 +1,5 @@
 # Description 
 # Setting up fussball teams 
-#
-# Commands:
-# Hubot foosball
-# hubot ball
-# hubot bold 
 
 maxplayers = 4 
 Array::shuffle = -> @sort -> 0.5 - Math.random()
