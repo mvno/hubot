@@ -7,10 +7,10 @@ Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 
 module.exports = (robot) ->
   robot.brain.data.players = []
-  robot.hear /^(foosball|ball|bold)*$/i, (msg) ->
+  robot.hear /^(foosball|ball|bold) ?(.*)/i, (msg) ->
     sender = msg.message.user.name
-    command = msg.match[1]
-    if (command?)
+    command = msg.match[2]
+    if (command? or command is "")
       if (robot.brain.data.players.length is 0)
         robot.brain.data.players.push sender
         msg.send ":soccer: #{robot.brain.data.players[0]} wants to play. Anyone else wants to play foosball?"
