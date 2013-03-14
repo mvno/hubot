@@ -1,17 +1,12 @@
 # Description 
 # Setting up fussball teams 
-#
-# Commands:
-# Hubot foosball
-# hubot ball
-# hubot bold 
 
 maxplayers = 4 
 Array::shuffle = -> @sort -> 0.5 - Math.random()
 
 module.exports = (robot) ->
   robot.brain.data.players = []
-  robot.respond  /@?(foosball|ball|bold)*$/i, (msg) ->
+  robot.hear /(foosball|ball|bold)/i, (msg) ->
     sender = msg.message.user.name
     if (robot.brain.data.players.length is 0)
       robot.brain.data.players.push sender
@@ -28,5 +23,5 @@ module.exports = (robot) ->
         else
           msg.send ":soccer: #{sender} is queued to play. #{maxplayers - robot.brain.data.players.length} more needed"
 
-  robot.respond /@?(foosball|ball|bold|debug) (queue|kø)*$/i, (msg) ->
+  robot.hear /(foosball|ball|bold) (queue|kø)*$/i, (msg) ->
     msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
