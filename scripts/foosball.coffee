@@ -9,6 +9,7 @@ module.exports = (robot) ->
   robot.brain.data.players = []
   robot.hear /^(foosball|ball|bold)*$/i, (msg) ->
     sender = msg.message.user.name
+    command = msg.match[1]
     if (robot.brain.data.players.length is 0)
       robot.brain.data.players.push sender
       msg.send ":soccer: #{robot.brain.data.players[0]} wants to play. Anyone else wants to play foosball?"
