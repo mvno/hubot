@@ -3,6 +3,7 @@
 
 maxplayers = 4 
 Array::shuffle = -> @sort -> 0.5 - Math.random()
+Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 
 module.exports = (robot) ->
   robot.brain.data.players = []
@@ -21,7 +22,12 @@ module.exports = (robot) ->
           msg.send ":soccer: :large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
           robot.brain.data.players = []
         else
-          msg.send ":soccer: #{sender} is queued to play. #{maxplayers - robot.brain.data.players.length} more needed"
+          msg.send ":soccer: #{sender} is game! #{maxplayers - robot.brain.data.players.length} more needed"
 
   robot.hear /(foosball|ball|bold) (queue|kø)*$/i, (msg) ->
     msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
+
+  robot.hear /(foosball|ball|bold) (remove|fjern)*$/i, (msg) ->
+    sender = msg.message.user.name
+    robot.brain.data.players.remove(sender)
+    msg.send ":soccer: #{sender} is a chicken. #{maxplayers - robot.brain.data.players.length} More needed"
