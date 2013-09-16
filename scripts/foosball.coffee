@@ -9,7 +9,7 @@ module.exports = (robot) ->
   robot.brain.data.players = []
   robot.hear /^(foosball|ball|bold) ?(.*)/i, (msg) ->
     sender = msg.message.user.name
-    command = msg.match[2].substring(0, str.indexOf(' '))
+    command = msg.match[2].substring(0, msg.match[2].indexOf(' '))
     if (command is "")
       if (robot.brain.data.players.length is 0)
         robot.brain.data.players.push sender
@@ -34,7 +34,7 @@ module.exports = (robot) ->
           robot.brain.data.players.remove(sender)
           msg.send ":soccer: #{sender} is a chicken. #{maxplayers - robot.brain.data.players.length} More needed"
         when "players"
-          commandData = msg.match[2].substring(str.indexOf(' ') + 1)
+          commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
           players = commandData.split(",")
           robot.brain.data.players.push players
           msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
