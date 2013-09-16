@@ -27,7 +27,7 @@ module.exports = (robot) ->
             msg.send ":soccer: #{sender} is game! #{maxplayers - robot.brain.data.players.length} more needed"
     else
       switch command
-        when "queue", "kø"
+        when "queue", "kÃ¸"
           msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         when "remove", "fjern"
           sender = msg.message.user.name
