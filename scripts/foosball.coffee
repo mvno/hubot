@@ -9,7 +9,7 @@ module.exports = (robot) ->
   robot.brain.data.players = []
   robot.hear /^(foosball|ball|bold) ?(.*)/i, (msg) ->
     sender = msg.message.user.name
-    command = msg.match[2].substring(0, msg.match[2].indexOf(' '))
+    command = msg.match[2].split(" ")[0]
     if (command is "")
       if (robot.brain.data.players.length is 0)
         robot.brain.data.players.push sender
@@ -36,7 +36,7 @@ module.exports = (robot) ->
         when "players"
           commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
           players = commandData.split(",")
-          robot.brain.data.players.push players
+          robot.brain.data.players.push player for player in players
           msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         else
           msg.send "#{command} is an unknown command"
