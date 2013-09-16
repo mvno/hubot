@@ -33,5 +33,9 @@ module.exports = (robot) ->
           sender = msg.message.user.name
           robot.brain.data.players.remove(sender)
           msg.send ":soccer: #{sender} is a chicken. #{maxplayers - robot.brain.data.players.length} More needed"
+        when "players"
+          players = msg.match[3].split(",")
+          robot.brain.data.players.push players
+          msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         else
           msg.send "#{command} is an unknown command"
