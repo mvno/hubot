@@ -4,8 +4,8 @@
 maxplayers = 4 
 Array::shuffle = -> @sort -> 0.5 - Math.random()
 Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
-playersAreReady = () -> (maxplayers - robot.brain.data.players.length) <= 0
-startGame = (message) -> 
+playersAreReady = (players) -> (maxplayers - players.length) <= 0
+startGame = (message, robot) -> 
   robot.brain.data.players.shuffle()
   message.send ":soccer: :large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
   robot.brain.data.players = []
@@ -24,8 +24,8 @@ module.exports = (robot) ->
           msg.send ":soccer: #{sender} REALLY wants to play. #{maxplayers - robot.brain.data.players.length} More needed"
         else
           robot.brain.data.players.push sender
-          if (playersAreReady())
-            startGame(msg)
+          if (playersAreReady(robot.brain.data.players))
+            startGame(msg, robot)
           else
             msg.send ":soccer: #{sender} is game! #{maxplayers - robot.brain.data.players.length} more needed"
     else
