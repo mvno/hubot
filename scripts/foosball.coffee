@@ -46,7 +46,7 @@ module.exports = (robot) ->
         when "players"
           commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
           players = commandData.split(",")
-          robot.brain.data.players.push player for player in players
+          robot.brain.data.players.push player.trim() for player in players
           if (playersAreReady(robot.brain.data.players))
             startGame(msg, robot)
           else
