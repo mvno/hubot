@@ -33,7 +33,8 @@ module.exports = (robot) ->
         when "queue", "kø"
           msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         when "remove", "fjern"
-          commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
+          message = msg.match[2]
+          commandData = if message.indexOf(' ') is -1 then '' else message.substring(message.indexOf(' ') + 1)
           if(commandData.length is 0)
             sender = msg.message.user.name
             robot.brain.data.players.remove(sender)
