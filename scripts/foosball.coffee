@@ -30,8 +30,13 @@ module.exports = (robot) ->
         when "queue", "kø"
           msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         when "remove", "fjern"
-          sender = msg.message.user.name
-          robot.brain.data.players.remove(sender)
+          if(commandData.length is 0)
+            sender = msg.message.user.name
+            robot.brain.data.players.remove(sender)
+          else
+            sender = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
+            robot.brain.data.players.remove(sender)
+
           msg.send ":soccer: #{sender} is a chicken. #{maxplayers - robot.brain.data.players.length} More needed"
         when "players"
           commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
