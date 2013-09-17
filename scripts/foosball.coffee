@@ -47,6 +47,9 @@ module.exports = (robot) ->
           commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
           players = commandData.split(",")
           robot.brain.data.players.push player for player in players
-          msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
+          if (playersAreReady(robot.brain.data.players))
+            startGame(msg, robot)
+          else
+            msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         else
           msg.send "#{command} is an unknown command"
