@@ -19,7 +19,7 @@ module.exports = (robot) ->
           msg.send ":soccer: #{sender} REALLY wants to play. #{maxplayers - robot.brain.data.players.length} More needed"
         else
           robot.brain.data.players.push sender
-          if ((maxplayers - robot.brain.data.players.length) is 0)
+          if ((maxplayers - robot.brain.data.players.length) <= 0)
             robot.brain.data.players.shuffle()
             msg.send ":soccer: :large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
             robot.brain.data.players = []
@@ -30,11 +30,12 @@ module.exports = (robot) ->
         when "queue", "kø"
           msg.send ":soccer: #{robot.brain.data.players.join(', ')} wants to play. #{maxplayers - robot.brain.data.players.length} more needed"
         when "remove", "fjern"
+          commandData = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
           if(commandData.length is 0)
             sender = msg.message.user.name
             robot.brain.data.players.remove(sender)
           else
-            sender = msg.match[2].substring(msg.match[2].indexOf(' ') + 1)
+            sender = commandData
             robot.brain.data.players.remove(sender)
 
           msg.send ":soccer: #{sender} is a chicken. #{maxplayers - robot.brain.data.players.length} More needed"
