@@ -10,7 +10,7 @@ module.exports = (robot) ->
    .get() (error, response, body) ->
     menu = JSON.parse(body)[getDate()]
     if menu?
-     msg.send menu
+     msg.send ":fork_and_knife: " + menu
     else
      msg.send "Couldn't find the menu for date " + getDate()
 
