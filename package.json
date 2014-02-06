@@ -18,7 +18,8 @@
     "hubot": ">=2.4.6",
     "hubot-scripts": ">= 2.4.1",
     "mongodb": "*",
-    "optparse": "1.0.3"
+    "optparse": "1.0.3",
+    "hubot-slack": "~1.5.2"
   },
 
   "engines": {
