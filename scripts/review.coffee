@@ -6,13 +6,13 @@ Array::shuffle = -> @sort -> 0.5 - Math.random()
 Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 reviewersAreReady = (reviewers) -> (maxreviewers - reviewers.length) <= 0
 startGame = (message, robot) ->
-  # robot.brain.data.reviewers.shuffle()
+  robot.brain.data.reviewers.shuffle()
   message.send ":octocat: Review! #{robot.brain.data.reviewers[0]}, #{robot.brain.data.reviewers[1]} & #{robot.brain.data.reviewers[2]}"
   robot.brain.data.reviewers = []
 
 module.exports = (robot) ->
   robot.brain.data.reviewers = []
-  robot.hear /^(review) ?(.*)/i, (msg) ->
+  robot.hear /(review)/, (msg) ->
     sender = msg.message.user.name
     command = msg.match[2].split(" ")[0]
     if (command is "")
