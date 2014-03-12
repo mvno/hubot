@@ -12,7 +12,7 @@ startGame = (message, robot) ->
 
 module.exports = (robot) ->
   robot.brain.data.reviewers = []
-  robot.hear /review$/i, (msg) ->
+  robot.respond /review$/i, (msg) ->
     sender = msg.message.user.name
     command = msg.match[2].split(" ")[0]
     if (command is "")
