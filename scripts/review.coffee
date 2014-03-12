@@ -13,6 +13,7 @@ startGame = (message, robot) ->
 module.exports = (robot) ->
   robot.brain.data.reviewers = []
   robot.respond /review/i, (msg) ->
+    msg.send ":octocat: review requested"
     sender = msg.message.user.name
     command = msg.match[2].split(" ")[0]
     if (command is "")
