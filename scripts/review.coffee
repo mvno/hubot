@@ -16,7 +16,7 @@ module.exports = (robot) ->
     # msg.send ":octocat: review requested"
     sender = msg.message.user.name
     command = msg.match[2].split(" ")[0]
-	msg.send "command: #{command}"
+    msg.send "command: #{command}"
     if (command is "")
       if (robot.brain.data.reviewers.length is 0)
         robot.brain.data.reviewers.push sender
