@@ -16,16 +16,17 @@ module.exports = (robot) ->
     msg.send ":octocat: review requested"
     sender = msg.message.user.name
     command = msg.match[2].split(" ")[0]
+    # msg.send "command: #{command}"
     #if (command is "")
     if (robot.brain.data.reviewers.length is 0)
-    robot.brain.data.reviewers.push sender
-    msg.send ":octocat: #{robot.brain.data.reviewers[0]} wants to do a codereview. Anyone else wants to do codereview?"
+      robot.brain.data.reviewers.push sender
+      msg.send ":octocat: #{robot.brain.data.reviewers[0]} wants to do a codereview. Anyone else wants to do codereview?"
     else
-    if (sender in robot.brain.data.reviewers)
+      if (sender in robot.brain.data.reviewers)
         msg.send ":octocat: #{sender} REALLY wants to review some code. #{maxreviewers - robot.brain.data.reviewers.length} more needed"
-    else
+      else
         robot.brain.data.reviewers.push sender
         if (reviewersAreReady(robot.brain.data.reviewers))
-        startGame(msg, robot)
+          startGame(msg, robot)
         else
-        msg.send ":octocat: #{sender} is game! #{maxreviewers - robot.brain.data.reviewers.length} more needed"
+          msg.send ":octocat: #{sender} is game! #{maxreviewers - robot.brain.data.reviewers.length} more needed"
