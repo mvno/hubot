@@ -19,7 +19,7 @@ module.exports = (robot) ->
     bringers = JSON.parse(body)
     msg.send bringers
     printEmployee employee for employee in bringers
-  request.setTimeout 10000 ->
+  request.setTimeout(10000) ->
    msg.send "Timeout expired"
 
 printEmployee = (employee) ->
