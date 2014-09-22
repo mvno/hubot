@@ -8,6 +8,7 @@ module.exports = (robot) ->
  robot.respond /breakfast$/i, (msg) ->
   msg.send "Fetching employees"
   msg.http("http://http://morgenmad.herokuapp.com/api/")
+   .header('Accept', 'application/json')
    .get() (error, response, body) ->
     if error
      msg.send "Encountered an error :( #{error}"
