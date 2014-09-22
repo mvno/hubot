@@ -9,7 +9,7 @@ module.exports = (robot) ->
   msg.http("http://http://morgenmad.herokuapp.com/api/")
    .get() (error, response, body) ->
     bringers = JSON.parse(body)
-    	printEmployee employee for employee in bringers
+    printEmployee employee for employee in bringers
 
 printEmployee = (employee) ->
 	msg.send ":fork_and_knife: " + employee.name
