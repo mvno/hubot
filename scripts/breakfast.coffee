@@ -9,7 +9,7 @@ module.exports = (robot) ->
   msg.send "Fetching employees"
 
   employees = "[{name: 'Endnu en testbruger'},{name: 'Martin Lund'},{name: 'Lund'}]";
-  bringers = JSON.parse(body)
+  bringers = JSON.parse(employees)
   msg.send bringers
   printEmployee employee for employee in bringers
 
