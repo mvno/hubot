@@ -8,11 +8,6 @@ module.exports = (robot) ->
  robot.respond /breakfast$/i, (msg) ->
   msg.send "Fetching employees"
 
-  employees = "[{name: 'Endnu en testbruger'},{name: 'Martin Lund'},{name: 'Lund'}]";
-  bringers = JSON.parse(employees)
-  msg.send bringers
-  printEmployee employee for employee in bringers
-
   request = msg.http("http://http://morgenmad.herokuapp.com/api/")
    .header('Accept', 'application/json')
    .get() (error, response, body) ->
