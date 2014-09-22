@@ -6,6 +6,7 @@
 
 module.exports = (robot) ->
  robot.respond /breakfast$/i, (msg) ->
+  msg.send "Fetching employees"
   msg.http("http://http://morgenmad.herokuapp.com/api/")
    .get() (error, response, body) ->
     if error
@@ -16,4 +17,4 @@ module.exports = (robot) ->
      printEmployee employee for employee in bringers
 
 printEmployee = (employee) ->
-	msg.send ":fork_and_knife: " + employee.name
+ msg.send ":fork_and_knife: " + employee.name
