@@ -12,7 +12,9 @@ module.exports = (robot) ->
     if error
      msg.send "Encountered an error :( #{error}"
      return
+
     msg.send "Http statuscode: " + response.statusCode
+    msg.send body
     bringers = JSON.parse(body)
     msg.send bringers
     printEmployee employee for employee in bringers
