@@ -2,7 +2,7 @@
 # Setting up fussball teams 
 
 maxplayers = 4 
-Array::shuffle = -> @sort -> 0.5 - Math.random()
+Array::shuffle = (a) -> a.sort -> 0.5 - Math.random()
 Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 playersAreReady = (players) -> (maxplayers - players.length) <= 0
 startGame = (message, robot) -> 
