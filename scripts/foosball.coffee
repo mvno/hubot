@@ -7,7 +7,7 @@ Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 playersAreReady = (players) -> (maxplayers - players.length) <= 0
 startGame = (message, robot) -> 
   robot.brain.data.players.shuffle()
-  message.send ":soccer: :large_blue_circle: #{robot.brain.data.players[0]} & #{robot.brain.data.players[1]} :red_circle: #{robot.brain.data.players[2]} & #{robot.brain.data.players[3]}"
+  message.send ":soccer: :large_blue_circle: @#{robot.brain.data.players[0]} & @#{robot.brain.data.players[1]} :red_circle: @#{robot.brain.data.players[2]} & @#{robot.brain.data.players[3]}"
   robot.brain.data.players = []
 
 module.exports = (robot) ->
