@@ -1,1 +1,0 @@
-../lib/hubot-scripts/src/scripts/eight-ball.coffee

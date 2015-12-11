@@ -2,19 +2,18 @@
 # Setting up fussball teams 
 
 maxplayers = 4 
-Array::shuffle = (a) -> a.sort -> 0.5 - Math.random()
+shuffle = (a) -> a.sort -> 0.5 - Math.random()
 Array::remove = (e) -> @[t..t] = [] if (t = @indexOf(e)) > -1
 playersAreReady = (players) -> (maxplayers - players.length) <= 0
 startGame = (message, robot) -> 
-  robot.brain.data.players.shuffle()
-  message.send ":soccer: :large_blue_circle: @#{robot.brain.data.players[0]} & @#{robot.brain.data.players[1]} :red_circle: @#{robot.brain.data.players[2]} & @#{robot.brain.data.players[3]}"
+  randomized_players = shuffle(robot.brain.data.players)
+  message.send ":soccer: :large_blue_circle: @#{randomized_players[0]} & @#{randomized_players[1]} :red_circle: @#{randomized_players[2]} & @#{randomized_players[3]}"
   robot.brain.data.players = []
-
-console.log 'registering foosball'
 
 module.exports = (robot) ->
   robot.brain.data.players = []
-  robot.hear /^(foosball|ball|bold) ?(.*)/i, (msg) ->
+
+  robot.hear /(bold)\s?(.*)/i, (msg) ->
     sender = msg.message.user.name
     command = msg.match[2].split(" ")[0]
     if (command is "")
