@@ -10,6 +10,8 @@ startGame = (message, robot) ->
   message.send ":soccer: :large_blue_circle: @#{robot.brain.data.players[0]} & @#{robot.brain.data.players[1]} :red_circle: @#{robot.brain.data.players[2]} & @#{robot.brain.data.players[3]}"
   robot.brain.data.players = []
 
+console.log 'registering foosball'
+
 module.exports = (robot) ->
   robot.brain.data.players = []
   robot.hear /^(foosball|ball|bold) ?(.*)/i, (msg) ->
