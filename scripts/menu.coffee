@@ -6,7 +6,7 @@
 
 module.exports = (robot) ->
  robot.respond /menu$/i, (msg) ->
-  msg.http("https://gist.githubusercontent.com/mtie/7465174/raw/MenuOfTheDay.json")
+  msg.http("https://gist.githubusercontent.com/jehmvno/eca5aee48cbd857ff3d198385e1584b2/raw/606f911634e22d49ce6b38a01d0ed2ae6e77c990/MenuOfTheDay.json")
    .get() (error, response, body) ->
     menu = JSON.parse(body)[getDate()]
     if menu?
